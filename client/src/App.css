@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-
+@custom-variant dark (&:is(.dark *));
 
 #root {
   max-width: 1280px;
@@ -98,4 +98,13 @@
   --chart-3: hsl(30 80% 55%);
   --chart-4: hsl(280 65% 60%);
   --chart-5: hsl(340 75% 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

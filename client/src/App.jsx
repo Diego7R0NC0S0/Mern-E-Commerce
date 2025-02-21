@@ -16,12 +16,13 @@ import ShoppingAccount from "./pages/shopping-view/account";
 import CheckAuth from "./components/common/check-auth";
 import UnauthPage from "./pages/unauth-page";
 
+
 function App() {
   const isAuthenticated = false;
   const user = null;
   return (
     <div className="flex flex-col overflow-hidden bg-white">
-      <h1>2:05:45</h1>
+      <h1>2:27:10</h1>
       <Routes>
         <Route
           path="/auth"

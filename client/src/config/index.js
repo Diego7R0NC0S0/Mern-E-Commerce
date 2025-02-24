@@ -1,3 +1,6 @@
+
+import path from "path";
+
 export const registerFormControls = [
   {
     name: "userName",
@@ -19,7 +22,7 @@ export const registerFormControls = [
     placeholder: "Enter your password",
     componentType: "input",
     type: "password",
-  }
+  },
 ];
 
 export const loginFormControls = [
@@ -36,6 +39,7 @@ export const loginFormControls = [
     placeholder: "Enter your password",
     componentType: "input",
     type: "password",
-  }
+  },
 ];
+
 

@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
-      <h1>3:02:42</h1>
+      <h1>3:34:55</h1>
       <Routes>
         <Route
           path="/auth"

@@ -1,3 +1,4 @@
+
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -10,7 +11,13 @@ import {
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 
-function CommonForm({formControls, formData, setFormData, onSubmit, buttonText}) {
+function CommonForm({
+  formControls,
+  formData,
+  setFormData,
+  onSubmit,
+  buttonText,
+}) {
   function renderInputsByComponentType(getControlItem) {
     let element = null;
     const value = formData[getControlItem.name] || "";
@@ -46,12 +53,12 @@ function CommonForm({formControls, formData, setFormData, onSubmit, buttonText})
             value={value}
           >
             <SelectTrigger className="w-full">
-              <SelectValue placeholder={getControlItem.placeholder} />
+              <SelectValue placeholder={getControlItem.label} />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-neutral-200">
               {getControlItem.options && getControlItem?.options.length > 0
                 ? getControlItem.options.map((optionItem) => (
-                    <SelectItem key={optionItem.id} value={optionItem.id}>
+                    <SelectItem key={optionItem.id} value={optionItem.id} className='hover:bg-neutral-50 cursor-pointer'>
                       {optionItem.label}
                     </SelectItem>
                   ))

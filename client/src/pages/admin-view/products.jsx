@@ -8,8 +8,10 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { addProductFormElements } from "@/config";
-import { useState } from "react";
+import { fetchAllProducts } from "@/store/admin/products-slice";
+import { useEffect, useState } from "react";
 import { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialFormData = {
   image: null,
@@ -28,11 +30,19 @@ function AdminProducts() {
   const [formData, setFormData] = useState(initialFormData);
   const [imageFile, setImageFile] = useState(null);
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
-  const [imageLoadingState, setImageLoadingState] = useState(false)
+  const [imageLoadingState, setImageLoadingState] = useState(false);
+  const { productList } = useSelector((state) => state.adminProducts);
+  const dispatch = useDispatch();
 
-  function onSubmit() {}
+  function onSubmit(event) {
+    event.preventDefault();
+  }
 
-  console.log(formData, 'formData')
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
+
+  console.log(productList, "productList");
 
   return (
     <Fragment>
@@ -63,6 +73,7 @@ function AdminProducts() {
             uploadedImageUrl={uploadedImageUrl}
             setUploadedImageUrl={setUploadedImageUrl}
             setImageLoadingState={setImageLoadingState}
+            imageLoadingState={imageLoadingState}
           />
           <div className="py-6">
             <CommonForm

@@ -19,6 +19,8 @@ import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "@/store/auth-slice";
+import UserCartWrapper from "./cart-wrapper";
+import { useState } from "react";
 
 function MenuItems() {
   return (
@@ -38,6 +40,7 @@ function MenuItems() {
 
 function HeaderRightContent() {
   const { user } = useSelector((state) => state.auth);
+  const [openCartSheet, setOpenCartSheet] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   function handleLogout() {
@@ -45,11 +48,19 @@ function HeaderRightContent() {
   }
 
   return (
-    <div className="flex lg:items-center lg:flex-row flex-col gap-4">
-      <Button variant="outline" size="icon">
-        <ShoppingCart className="h-6 w-6" />
-        <span className="sr-only">User cart</span>
-      </Button>
+    <div className="flex lg:items-center lg:flex-row flex-col gap-4 ">
+      <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
+        <Button
+          onClick={() => setOpenCartSheet(true)}
+          variant="outline"
+          size="icon"
+          className='my_button'
+        >
+          <ShoppingCart className="h-6 w-6" />
+          <span className="sr-only">User cart</span>
+        </Button>
+        <UserCartWrapper />
+      </Sheet>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar className="bg-black">
@@ -109,15 +120,15 @@ function ShoppinHeader() {
             className="w-full max-w-xs bg-neutral-200 pl-4 pt-5"
           >
             <MenuItems />
-            <HeaderRightContent/>
+            <HeaderRightContent />
           </SheetContent>
         </Sheet>
         <div className="hidden lg:block">
           <MenuItems />
         </div>
-          <div className="hidden lg:block">
-            <HeaderRightContent />
-          </div>
+        <div className="hidden lg:block">
+          <HeaderRightContent />
+        </div>
       </div>
     </header>
   );

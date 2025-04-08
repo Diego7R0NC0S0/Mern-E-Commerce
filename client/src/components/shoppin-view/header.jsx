@@ -20,19 +20,46 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "@/store/auth-slice";
 import UserCartWrapper from "./cart-wrapper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchCartItems } from "@/store/shop/cart-slice";
+import { Label } from "../ui/label";
+import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 function MenuItems() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  function handleNavigate(getCurrentMenuItem) {
+    sessionStorage.removeItem("filters");
+    const currentFilter =
+      getCurrentMenuItem.id !== "home" &&
+      getCurrentMenuItem.id !== "products" &&
+      getCurrentMenuItem.id !== "search"
+        ? {
+            category: [getCurrentMenuItem.id],
+          }
+        : null;
+
+    sessionStorage.setItem("filters", JSON.stringify(currentFilter));
+
+    location.pathname.includes("listing") && currentFilter !== null
+      ? setSearchParams(
+          new URLSearchParams(`?category=${getCurrentMenuItem.id}`)
+        )
+      : navigate(getCurrentMenuItem.path);
+  }
   return (
     <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
-        <Link
-          className="text-sm font-medium"
+        <Label
+          onClick={() => handleNavigate(menuItem)}
+          className="text-sm font-medium cursor-pointer"
           key={menuItem.id}
-          to={menuItem.path}
         >
           {menuItem.label}
-        </Link>
+        </Label>
       ))}
     </nav>
   );
@@ -40,12 +67,20 @@ function MenuItems() {
 
 function HeaderRightContent() {
   const { user } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.shopCart);
   const [openCartSheet, setOpenCartSheet] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   function handleLogout() {
     dispatch(logoutUser());
   }
+
+  useEffect(() => {
+    dispatch(fetchCartItems(user?.id));
+  }, [dispatch]);
+
+  console.log(cartItems, "dtldtldtl");
 
   return (
     <div className="flex lg:items-center lg:flex-row flex-col gap-4 ">
@@ -54,12 +89,20 @@ function HeaderRightContent() {
           onClick={() => setOpenCartSheet(true)}
           variant="outline"
           size="icon"
-          className='my_button'
+          className="my_button relative"
         >
           <ShoppingCart className="h-6 w-6" />
+          <span className="absolute top-[-3px] right-[4px] font-bold text-sm">{cartItems?.items?.length || 0}</span>
           <span className="sr-only">User cart</span>
         </Button>
-        <UserCartWrapper />
+        <UserCartWrapper
+          setOpenCartSheet={setOpenCartSheet}
+          cartItems={
+            cartItems && cartItems.items && cartItems.items.length > 0
+              ? cartItems.items
+              : []
+          }
+        />
       </Sheet>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-/*
+
+
+
   .my_button {
     border-radius: 8px;
     border: 1px solid transparent;
@@ -19,7 +21,23 @@
   .my_button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
   }
-*/
+
+  .my_button-2 {
+    font-family: inherit;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  .my_button-2:hover {
+    border-color: black;
+    background-color: rgb(61, 57, 57);
+  }
+  .my_button-2:focus,
+  .my_button-2:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+
 
 
 .my_style {
@@ -67,4 +85,28 @@
   box-shadow: 0 0 0.6em 0.25em var(--glow-color),
     0 0 2.5em 2em var(--glow-spread-color),
     inset 0 0 0.5em 0.25em var(--glow-color);
+}
+
+.style_dt{
+  background-color: white;
+}
+
+.my_text_color{
+  color: white;
+}
+
+.muted{
+  background-color: gray;
+}
+
+.text-muted-foreground{
+  color: gray;
+}
+
+.bg-primary {
+  background-color: hsl(222.2, 47.4%, 11.2%); /* Azul oscuro */
+}
+
+.text-primary-foreground {
+  color: hsl(210, 40%, 98%); /* Blanco claro */
 }

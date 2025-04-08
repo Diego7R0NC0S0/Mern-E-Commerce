@@ -1,10 +1,12 @@
 import ProductImageUpload from "@/components/admin-view/image-upload";
 import { Button } from "@/components/ui/button";
-import { addFeatureImage, getFeatureImages } from "@/store/common-slice";
+import { addFeatureImage, getFeatureImages, deleteFeatureImage } from "@/store/common-slice";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { Trash2 } from "lucide-react";
+import { toast } from "sonner";
 
 function AdminDashboard() {
   const [imageFile, setImageFile] = useState(null);
@@ -21,6 +23,16 @@ function AdminDashboard() {
         dispatch(getFeatureImages());
         setImageFile(null)
         setUploadedImageUrl("")
+        toast.success("Image uploaded successfully");
+      }
+    });
+  }
+
+  function handleDeleteImage(imageId) {
+    dispatch(deleteFeatureImage(imageId)).then((data) => {
+      if (data?.payload?.success) {
+        dispatch(getFeatureImages());
+        toast.success("Image deleted successfully");
       }
     });
   }
@@ -52,11 +64,20 @@ function AdminDashboard() {
       <div className="flex flex-col gap-4 mt-5">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((featureImageItem) => (
-              <div className="relative">
+              <div key={featureImageItem._id} className="relative group">
                 <img
                   src={featureImageItem.image}
                   className="w-full h-[300px] object-cover rounded-t-lg"
+                  alt="Feature image"
                 />
+                <Button 
+                  variant="destructive" 
+                  size="icon" 
+                  className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={() => handleDeleteImage(featureImageItem._id)}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
               </div>
             ))
           : null}

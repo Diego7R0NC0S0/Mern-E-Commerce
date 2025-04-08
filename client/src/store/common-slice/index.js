@@ -23,7 +23,19 @@ export const addFeatureImage = createAsyncThunk(
   async (image) => {
     const response = await axios.post(
       `http://localhost:5000/api/common/feature/add`,
-      {image}
+      { image }
+    );
+
+    return response.data;
+  }
+);
+
+// Acción para eliminar imágenes
+export const deleteFeatureImage = createAsyncThunk(
+  "/common/deleteFeatureImage",
+  async (id) => {
+    const response = await axios.delete(
+      `http://localhost:5000/api/common/feature/delete/${id}`
     );
 
     return response.data;
@@ -46,6 +58,16 @@ const commonSlice = createSlice({
       .addCase(getFeatureImages.rejected, (state) => {
         state.isLoading = false;
         state.featureImageList = [];
+      })
+      .addCase(deleteFeatureImage.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteFeatureImage.fulfilled, (state, action) => {
+        state.isLoading = false;
+        // No necesitamos actualizar el estado aquí porque vamos a obtener las imágenes actualizadas
+      })
+      .addCase(deleteFeatureImage.rejected, (state) => {
+        state.isLoading = false;
       });
   },
 });

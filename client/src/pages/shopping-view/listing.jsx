@@ -137,12 +137,12 @@ function ShoppingListing() {
   console.log(productList, "este es el product list");
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 p-4 md:p-6">
+    <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 p-4 md:p-6 bg_dt2 min-h-screen">
       <ProductFilter filters={filters} handleFilter={handleFilter} />
-      <div className="bg-background rounded-lg shadow-sm w-full ">
-        <div className="p-4 border-b flex items-center  justify-between">
+      <div className="bg-background rounded-lg w-full ">
+        <div className="p-4 border-b flex items-center  justify-between bg_dt3 ">
           <h2 className="text-lg font-extrabold">All Products</h2>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ">
             <span className="text-muted-foreground">
               {productList?.length} Products
             </span>
@@ -151,13 +151,13 @@ function ShoppingListing() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="flex items-center gap-1 "
+                  className="flex items-center gap-1 my_button"
                 >
                   <ArrowUpDownIcon className="h-4 w-4 " />
                   <span>Sort by</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-[200px] bg-white">
+              <DropdownMenuContent align="end" className="w-[200px] style_dt2 ">
                 <DropdownMenuRadioGroup value={sort} onValueChange={handleSort}>
                   {sortOptions.map((sortItem) => (
                     <DropdownMenuRadioItem
@@ -173,7 +173,7 @@ function ShoppingListing() {
             </DropdownMenu>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 bg_dt4 sombra ">
           {productList && productList.length > 0
             ? productList.map((productItem) => (
                 <ShoppingProductTile

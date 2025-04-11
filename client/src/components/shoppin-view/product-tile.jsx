@@ -9,7 +9,7 @@ function ShoppingProductTile({
   handleAddtoCart,
 }) {
   return (
-    <Card className="w-full max-w-sm mx-auto ">
+    <Card className="w-full max-w-sm mx-auto hover:shadow-2xl transition-shadow style_dt2 cursor-pointer">
       <div onClick={() => handleGetProductDetails(product?._id)}>
         <div className="relative">
           <img
@@ -32,7 +32,7 @@ function ShoppingProductTile({
           ) : null}
         </div>
         <CardContent className="p-4">
-          <h2 className="text-xl font-bold mb-2">{product?.title}</h2>
+          <h2 className="text-xl font-bold mb-2 ">{product?.title}</h2>
           <div className="flex items-center justify-between mb-2">
             <span className="text-md text-slate-500">
               {categoryOptionsMap[product?.category]}

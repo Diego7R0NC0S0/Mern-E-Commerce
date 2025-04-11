@@ -40,8 +40,7 @@ function App() {
   console.log(isLoading, user);
 
   return (
-    <div className="flex flex-col overflow-hidden bg-white">
-      <h1>14:26:32</h1>
+    <div className="flex flex-col overflow-hidden bg_dt2">
       <Routes>
         <Route
         path="/"

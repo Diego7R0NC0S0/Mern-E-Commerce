@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import bannerOne from "../../assets/banner-1.webp";
 import bannerTwo from "../../assets/banner-2.webp";
 import bannerThree from "../../assets/banner-3.webp";
+import { SiNike, SiAdidas, SiPuma, SiZara, } from "react-icons/si";
+import { RiWomenLine, RiMenFill  } from "react-icons/ri";
+import { GiConverseShoe } from "react-icons/gi";
 import {
   Airplay,
   BabyIcon,
@@ -30,22 +33,24 @@ import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import { toast } from "sonner";
 import ProductDetailsDialog from "@/components/shoppin-view/product-details";
 import { getFeatureImages } from "@/store/common-slice";
+import LeviIcon from "@/components/icons/levi-icon";
+import HYMIcon from "@/components/icons/h&m-icon";
 
 const categoriesWithIcon = [
-  { id: "men", label: "Men", icon: ShirtIcon },
-  { id: "women", label: "Women", icon: CloudLightning },
+  { id: "men", label: "Men", icon: RiMenFill  },
+  { id: "women", label: "Women", icon: RiWomenLine  },
   { id: "kids", label: "Kids", icon: BabyIcon },
   { id: "accessories", label: "Accessories", icon: WatchIcon },
-  { id: "footwear", label: "Footwear", icon: Umbrella },
+  { id: "footwear", label: "Footwear", icon: GiConverseShoe },
 ];
 
 const brandsWithIcon = [
-  { id: "nike", label: "Nike", icon: Shirt },
-  { id: "adidas", label: "Adidas", icon: WashingMachine },
-  { id: "puma", label: "Puma", icon: ShoppingBasket },
-  { id: "levi", label: "Levi's", icon: Airplay },
-  { id: "zara", label: "Zara", icon: Images },
-  { id: "h&m", label: "H&M", icon: Heater },
+  { id: "nike", label: "Nike", icon: SiNike },
+  { id: "adidas", label: "Adidas", icon: SiAdidas },
+  { id: "puma", label: "Puma", icon: SiPuma  },
+  { id: "levi", label: "Levi's", icon: LeviIcon },
+  { id: "zara", label: "Zara", icon: SiZara  },
+  { id: "h&m", label: "H&M", icon: HYMIcon },
 ];
 
 function ShoppingHome() {
@@ -120,7 +125,7 @@ function ShoppingHome() {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col min-h-screen pt-16 md:pt-20">
+    <div className="flex flex-col min-h-screen pt-16 md:pt-20 bg_dt2">
       <div className="relative w-full h-[300px] md:h-[400px] lg:h-[600px] overflow-hidden">
         {featureImageList && featureImageList.length > 0 ? featureImageList.map((slide, index) => (
           <img
@@ -154,7 +159,7 @@ function ShoppingHome() {
           <ChevronRightIcon className="w-4 h-4"></ChevronRightIcon>
         </Button>
       </div>
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg_dt2">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Shop by category
@@ -165,7 +170,7 @@ function ShoppingHome() {
                 onClick={() =>
                   handleNavigateToListingPage(categoryItem, "category")
                 }
-                className="cursor-pointer hover:shadow-lg transition-shadow "
+                className="cursor-pointer hover:shadow-lg transition-shadow style_dt"
               >
                 <CardContent className="flex flex-col items-center justify-center p-6 ">
                   <categoryItem.icon className="w-12 h-12 mb-4 text-primary" />
@@ -177,14 +182,14 @@ function ShoppingHome() {
         </div>
       </section>
 
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg_dt2">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Shop by brand</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {brandsWithIcon.map((brandItem) => (
               <Card
                 onClick={() => handleNavigateToListingPage(brandItem, "brand")}
-                className="cursor-pointer hover:shadow-lg transition-shadow "
+                className="cursor-pointer hover:shadow-lg transition-shadow style_dt "
               >
                 <CardContent className="flex flex-col items-center justify-center p-6 ">
                   <brandItem.icon className="w-12 h-12 mb-4 text-primary" />

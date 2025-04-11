@@ -101,7 +101,9 @@ function AdminProducts() {
   return (
     <Fragment>
       <div className="mb-5 w-full flex justify-end ">
-        <Button onClick={() => setOpenCreateProductsDialog(true)}>
+        <Button 
+        className="my_button"
+        onClick={() => setOpenCreateProductsDialog(true)}>
           Add New Product
         </Button>
       </div>
@@ -128,7 +130,7 @@ function AdminProducts() {
       >
         <SheetContent
           side="right"
-          className="overflow-auto bg-neutral-200 pl-2.5 pr-2.5"
+          className="overflow-auto bg_dt2 pl-2.5 pr-2.5"
         >
           <SheetHeader>
             <SheetTitle className="text-lg font-semibold ">

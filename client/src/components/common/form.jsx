@@ -27,6 +27,7 @@ function CommonForm({
       case "input":
         element = (
           <Input
+            className="bg-white"
             name={getControlItem.name}
             placeholder={getControlItem.placeholder}
             id={getControlItem.name}
@@ -53,10 +54,10 @@ function CommonForm({
             }
             value={value}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-white">
               <SelectValue placeholder={getControlItem.label} />
             </SelectTrigger>
-            <SelectContent className="bg-neutral-200">
+            <SelectContent className="style_dt2 ">
               {getControlItem.options && getControlItem?.options.length > 0
                 ? getControlItem.options.map((optionItem) => (
                     <SelectItem key={optionItem.id} value={optionItem.id} className='hover:bg-neutral-50 cursor-pointer'>
@@ -72,6 +73,7 @@ function CommonForm({
       case "textarea":
         element = (
           <Textarea
+            className="bg-white"
             name={getControlItem.name}
             placeholder={getControlItem.placeholder}
             id={getControlItem.id}

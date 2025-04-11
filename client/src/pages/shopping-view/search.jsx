@@ -81,14 +81,14 @@ function SearchProducts() {
   console.log(searchResults, "searchResultssearchResults");
 
   return (
-    <div className="container mx-auto md:px-6 px-4 py-8">
-      <div className="flex justify-center mb-8">
+    <div className="container mx-auto md:px-6 px-4 py-8 min-h-screen ">
+      <div className="flex justify-center mb-8 ">
         <div className="w-full flex items-center">
           <Input
             value={keyword}
             name="keyword"
             onChange={(event) => setKeyword(event.target.value)}
-            className="py-5"
+            className="py-5 bg-white"
             placeholder="Search Products..."
           />
         </div>

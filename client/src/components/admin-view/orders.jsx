@@ -41,7 +41,7 @@ function AdminOrdersView() {
   }, [orderDetails]);
 
   return (
-    <Card>
+    <Card className="sombra">
       <CardHeader>
         <CardTitle>All Orders</CardTitle>
       </CardHeader>
@@ -61,7 +61,7 @@ function AdminOrdersView() {
           <TableBody>
             {orderList && orderList.length > 0
               ? orderList.map((orderItem) => (
-                  <TableRow>
+                  <TableRow className="hover:bg-white">
                     <TableCell>{orderItem?._id}</TableCell>
                     <TableCell>{orderItem?.orderDate.split("T")[0]}</TableCell>
                     <TableCell>

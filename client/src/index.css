@@ -1,21 +1,38 @@
 @import "tailwindcss";
 
 
+/* 
+    #030712
+    #061735
+    #0c3469
+    #1e5e9b
+    #6894c2 */
 
+/*     
+    #25324b
+    #384b71 
+    #506aa0
+    #96afd8
+    #c6d4ec
+    #b1c0db 
+    #e5eaf3
+ */
 
   .my_button {
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
     font-family: inherit;
-    background-color: black;
-    color: white;
+    background-color: #25324b;
+    color: #e5eaf3;
     cursor: pointer;
     transition: border-color 0.25s;
+
   }
   .my_button:hover {
-    border-color: black;
-    background-color: rgb(61, 57, 57);
+    border-color: #25324b;
+    background-color: #506aa0 ;
+    color: #e5eaf3;
   }
   .my_button:focus,
   .my_button:focus-visible {
@@ -24,14 +41,15 @@
 
   .my_button-2 {
     font-family: inherit;
-    background-color: black;
-    color: white;
+    background-color: #25324b;
+    color: #e5eaf3;
     cursor: pointer;
     transition: border-color 0.25s;
   }
   .my_button-2:hover {
-    border-color: black;
-    background-color: rgb(61, 57, 57);
+    border-color: #25324b;
+    background-color: #506aa0;
+    color: #e5eaf3;
   }
   .my_button-2:focus,
   .my_button-2:focus-visible {
@@ -40,59 +58,62 @@
 
 
 
-.my_style {
-  --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
-  --enached-glow-color: rgb(231, 206, 255);
-  --btn-color: rgb(100, 61, 136);
-  border: 0.25em solid var(--glow-color);
-  padding: 1em 3em;
-  color: var(--glow-color);
-  font-size: 15px;
-  font-weight: bold;
-  background-color: var(--btn-color);
-  outline: none;
-  box-shadow: 0 0 1em 0.25em var(--glow-color),
-  0 0 4em 1em var(--glow-spread-color),
-  inset 0 0 0.75em 0.25em var(--glow-color);
-  text-shadow: 0 0 0.5em var(--glow-color);
-  position: relative;
-  transition: all 0.3s;
+.bg_dt{
+  background-color: #96afd8;
 }
 
-.my_style::after {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  top: 120%;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: var(--glow-spread-color);
-  filter: blur(2em);
-  opacity: 0.7;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+.bg_dt2{
+  background-color: #e5eaf3;
 }
 
-.my_style:hover {
-  color: var(--btn-color);
-  background-color: var(--glow-color);
-  box-shadow: 0 0 1em 0.25em var(--glow-color),
-    0 0 4em 2em var(--glow-spread-color),
-    inset 0 0 0.75em 0.25 var(--glow-color);
+.bg_dt3{
+  background-color: #c6d4ec;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: #25324b solid 1px;
 }
-.my_style:active {
-  box-shadow: 0 0 0.6em 0.25em var(--glow-color),
-    0 0 2.5em 2em var(--glow-spread-color),
-    inset 0 0 0.5em 0.25em var(--glow-color);
+
+.bg_dt4{
+  background-color: #e5eaf3;
+  border-bottom: #25324b solid 1px;
+  border-left: #25324b solid 1px;
+  border-right: #25324b solid 1px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .style_dt{
-  background-color: white;
+  background-color: #506aa0;
+  color: #c6d4ec;
+}
+
+.style_dt:hover {
+  border-color: #506aa0;
+  background-color: #96afd8;
+  color: #506aa0;
+}
+
+.style_dt2{
+  background-color: #d8dfed ;
+  color: #030712;
+}
+
+.style_dt2:hover {
+  border-color: #506aa0;
+  background-color: #c6d4ec;
+  color: #030712;
+}
+
+.tx_dt{
+  color: #030712;
+}
+
+.tx_dt:hover{
+  color: #506aa0;
 }
 
 .my_text_color{
-  color: white;
+  color: #6894c2;
 }
 
 .muted{
@@ -104,9 +125,13 @@
 }
 
 .bg-primary {
-  background-color: hsl(222.2, 47.4%, 11.2%); /* Azul oscuro */
+  background-color: #25324b; /* Azul oscuro */
 }
 
 .text-primary-foreground {
-  color: hsl(210, 40%, 98%); /* Blanco claro */
+  color: #e5eaf3; /* Blanco claro */
+}
+
+.sombra{
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 6px 8px -3px rgba(0, 0, 0, 0.3);
 }

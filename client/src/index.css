@@ -66,6 +66,8 @@
   background-color: #e5eaf3;
 }
 
+
+
 .bg_dt3{
   background-color: #c6d4ec;
   border-top-left-radius: 10px;
@@ -80,6 +82,10 @@
   border-right: #25324b solid 1px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.bg_dt5{
+  background-color: #25324b;
 }
 
 .style_dt{

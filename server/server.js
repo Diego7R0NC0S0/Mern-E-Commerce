@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
@@ -22,7 +23,7 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 
 mongoose
   .connect(
-    "mongodb+srv://"
+    process.env.MONGODB_URI
   )
   .then(() => console.log("MongoDB conected"))
   .catch((error) => console.log(error));

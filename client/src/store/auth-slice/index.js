@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_URL } from '@/config/api'
 
 const initialState = {
   isAuthenticated: false,
@@ -8,12 +9,15 @@ const initialState = {
   user: null,
 };
 
+// URL del backend desplegado
+const API_URL = "https://e-commerce-ye64.onrender.com";
+
 export const registerUser = createAsyncThunk(
   "/auth/register",
 
   async (formData) => {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/register",
+      `${API_URL}/api/auth/register`,
       formData,
       {
         withCredentials: true,
@@ -29,7 +33,7 @@ export const loginUser = createAsyncThunk(
 
   async (formData) => {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/login",
+      `${API_URL}/api/auth/login`,
       formData,
       {
         withCredentials: true,
@@ -44,7 +48,7 @@ export const logoutUser = createAsyncThunk(
   "/auth/logout",
 
   async () => {
-    const response = await axios.post("http://localhost:5000/api/auth/logout", {}, {
+    const response = await axios.post(`${API_URL}/api/auth/logout`, {}, {
       withCredentials: true,
     });
 
@@ -57,7 +61,7 @@ export const checkAuth = createAsyncThunk(
 
   async () => {
     const response = await axios.get(
-      "http://localhost:5000/api/auth/check-auth",
+      `${API_URL}/api/auth/check-auth`,
       {
         withCredentials: true,
         headers: {

@@ -1,3 +1,4 @@
+import { API_URL } from "@/config/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -7,11 +8,13 @@ const initialState = {
   searchResults: [],
 };
 
+
+
 export const getSearchResults = createAsyncThunk(
   "/order/getSearchResults",
   async (keyword) => {
     const response = await axios.get(
-      `http://localhost:5000/api/shop/search/${keyword}`
+      `${API_URL}/api/shop/search/${keyword}`
     );
 
     return response.data;

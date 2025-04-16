@@ -9,8 +9,6 @@ const initialState = {
   user: null,
 };
 
-// URL del backend desplegado
-const API_URL = "https://e-commerce-ye64.onrender.com";
 
 export const registerUser = createAsyncThunk(
   "/auth/register",

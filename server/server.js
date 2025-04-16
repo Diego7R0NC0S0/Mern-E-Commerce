@@ -22,7 +22,7 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 
 mongoose
   .connect(
-    "mongodb+srv://diegotroncosolopez:GN6waCpYmlhFFSSS@cluster0.q97at.mongodb.net/"
+    "mongodb+srv://"
   )
   .then(() => console.log("MongoDB conected"))
   .catch((error) => console.log(error));
